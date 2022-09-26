@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  artemis:
+    container_name: activeMQContainer
+    image: vromero/activemq-artemis
+    restart: always
+    environment:
+      - ARTEMIS_USERNAME=rasitesdmr
+      - ARTEMIS_PASSWORD=rasitesdmr
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+
