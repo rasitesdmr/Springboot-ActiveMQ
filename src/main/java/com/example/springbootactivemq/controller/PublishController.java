@@ -19,7 +19,7 @@ public class PublishController {
     @PostMapping("/publishMessage")
     public ResponseEntity<String> publishMessage(@RequestBody Message message) {
         try {
-            // // "rasitesdmr-queue" adlı mesaj kuyruğuna mesaj gönder
+            // "rasitesdmr-queue" adlı mesaj kuyruğuna mesaj gönder
             jmsTemplate.convertAndSend("rasitesdmr-queue", message); //Dönüştür ve gönder
             return new ResponseEntity<>("Sent", HttpStatus.OK);
         } catch (Exception exception) {
