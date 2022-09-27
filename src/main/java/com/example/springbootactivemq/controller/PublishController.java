@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class PublishController {
 
     @Autowired
-    private JmsTemplate jmsTemplate;
+    private JmsTemplate jmsTemplate;  // JMS kuyruğuna gidip gelmek için kullanacağız.
+
 
     @PostMapping("/publishMessage")
     public ResponseEntity<String> publishMessage(@RequestBody Message message) {
-
         try {
-            jmsTemplate.convertAndSend("rasitesdmr-queue", message);
+            // // "rasitesdmr-queue" adlı mesaj kuyruğuna mesaj gönder
+            jmsTemplate.convertAndSend("rasitesdmr-queue", message); //Dönüştür ve gönder
             return new ResponseEntity<>("Sent", HttpStatus.OK);
         } catch (Exception exception) {
             return new ResponseEntity<>(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
